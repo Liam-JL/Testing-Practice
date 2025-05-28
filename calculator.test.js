@@ -65,7 +65,29 @@ describe ("subtract", () => {
 })
 
 describe ("multiply", () => {
-    
+    test ("2 * 2 = 4", () => {
+        expect(calculator.multiply(2,2)).toBe(4);
+    })
+
+    test ("2876 * 49587 = 142612212", () => {
+        expect(calculator.multiply(2876, 49587)).toBe(142612212)
+    })
+
+    test ("Floats work", () => {
+        expect(calculator.multiply(0.2, 2)).toBe(0.4);
+    })
+
+    test ("negatives work", () => {
+        expect(calculator.multiply(-2, 2)).toBe(-4) 
+    })
+
+    test ("no inputs throws error", () => {
+        expect(() => calculator.subtract()).toThrow(new Error('Expected 2 numbers as arguments but received 0'));
+    })
+
+    test ("1 input throws error", () => {
+        expect(() => calculator.subtract(2)).toThrow(new Error('Expected 2 numbers as arguments but received 1'));        
+    })
 }) 
 
 describe ("divide", () => {
