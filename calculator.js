@@ -1,43 +1,31 @@
 export const calculator = {
-    enforceArgsAmount : function(args) {
+    validateArgs : function(args) {
         if (args.length !== 2) {
             throw new Error(`Expected 2 numbers as arguments but received ${args.length}`)
         }
+
+        args.forEach((arg) => {
+            if (typeof arg !== "number") {
+                throw new TypeError(`Expected numbers but got ${typeof args[0]} and ${typeof args[1]}`);
+            }
+        })
     },
 
-    add : function(a, b) {
-        if (!a || !b) {
-            throw new Error(`Expected 2 numbers as arguments but received ${Number(!!a) + Number(!!b)}`)
-        }
-
-        if (typeof(a) !== "number" || typeof(b) !== "number") {
-            throw new TypeError(`Expected numbers but got ${typeof a} and ${typeof b}`);
-        }
-
+    add : function(...args) {
+        this.validateArgs(args);
+        const [a, b] = args;
         return (a * 10 + b * 10) / 10;
     },
 
-    subtract : function(a, b) {
-        if (!a || !b) {
-            throw new Error(`Expected 2 numbers as arguments but received ${Number(!!a) + Number(!!b)}`)
-        }
-
-        if (typeof(a) !== "number" || typeof(b) !== "number") {
-            throw new TypeError(`Expected numbers but got ${typeof a} and ${typeof b}`);
-        }
-
+    subtract : function(...args) {
+        this.validateArgs(args);
+        const [a, b] = args;
         return (a * 10 - b * 10) / 10;
     },
 
     multiply : function(...args) {
-        this.enforceArgsAmount(args);
-
+        this.validateArgs(args);
         const [a, b] = args;
-
-        if (typeof(a) !== "number" || typeof(b) !== "number") {
-            throw new TypeError(`Expected numbers but got ${typeof a} and ${typeof b}`);
-        }
-
         return (a * b * 10) / 10;
     }
 }
