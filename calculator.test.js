@@ -37,3 +37,37 @@ describe ("add", () => {
         expect(calculator.add(0.1, 0.2)).toBe(0.3);
     })
 })
+
+describe ("subtract", () => {
+    test ("1 - 1 = 0", () => {
+        expect(calculator.subtract(1,1)).toBe(0);
+    })
+
+    test ("239 - 123 = 116", () => {
+        expect(calculator.subtract(239, 123)).toBe(116);
+    })
+
+    test ("floating points work", () => {
+        expect(calculator.subtract(0.3, 0.2)).toBe(0.1);
+    })
+
+    test ("negatives work", () => {
+        expect(calculator.subtract(1,-1)).toBe(2);
+    }) 
+
+    test ("no inputs throws error", () => {
+        expect(() => calculator.subtract()).toThrow(new Error('Expected 2 numbers as arguments but received 0'));
+    })
+
+    test ("1 input throws error", () => {
+        expect(() => calculator.subtract(2)).toThrow(new Error('Expected 2 numbers as arguments but received 1'));        
+    })
+})
+
+describe ("multiply", () => {
+    
+}) 
+
+describe ("divide", () => {
+    
+}) 
