@@ -82,11 +82,15 @@ describe ("multiply", () => {
     })
 
     test ("no inputs throws error", () => {
-        expect(() => calculator.subtract()).toThrow(new Error('Expected 2 numbers as arguments but received 0'));
+        expect(() => calculator.multiply()).toThrow(new Error('Expected 2 numbers as arguments but received 0'));
     })
 
     test ("1 input throws error", () => {
-        expect(() => calculator.subtract(2)).toThrow(new Error('Expected 2 numbers as arguments but received 1'));        
+        expect(() => calculator.multiply(2)).toThrow(new Error('Expected 2 numbers as arguments but received 1'));        
+    })
+
+    test ("too many arguments given", () => {
+        expect(() => calculator.multiply(1, 2, 3)).toThrow(new Error('Expected 2 numbers as arguments but received 3'))
     })
 }) 
 
