@@ -95,5 +95,23 @@ describe ("multiply", () => {
 }) 
 
 describe ("divide", () => {
+    test ("4 / 2 = 2", () => {
+        expect(calculator.divide(4, 2)).toBe(2) 
+    })
     
+    test ("1000 / 4 = 250", () => {
+        expect(calculator.divide(1000, 4)).toBe(250)
+    })
+
+    test ("Division with float answer works", () => {
+        expect(calculator.divide(456, 123)).toBe(3.70731707317)
+    })
+
+    test ("Negatives work", () => {
+        expect(calculator.divide(30, -2)).toBe(-15);
+    })
+
+    test ("Divide by 0 throws", () => {
+        expect(() => calculator.divide(3, 0)).toThrow(new Error("Don't do that"))
+    })
 }) 
