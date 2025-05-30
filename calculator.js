@@ -27,5 +27,12 @@ export const calculator = {
         this.validateArgs(args);
         const [a, b] = args;
         return (a * b * 10) / 10;
+    },
+
+    divide : function(...args) {
+        this.validateArgs(args);
+        const [a, b] = args;
+        if (b === 0) throw new Error("Don't do that");
+        return Number(((a / b * 10) / 10).toFixed(11)); 
     }
 }
